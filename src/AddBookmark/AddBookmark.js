@@ -1,4 +1,5 @@
-import React, { Component } from  'react';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import config from '../config'
 import './AddBookmark.css';
 
@@ -8,7 +9,7 @@ const Required = () => (
 
 class AddBookmark extends Component {
   static defaultProps = {
-    onAddBookmark: () => {}
+    onAddBookmark: () => { }
   };
 
   state = {
@@ -49,6 +50,7 @@ class AddBookmark extends Component {
         url.value = ''
         description.value = ''
         rating.value = ''
+        this.props.history.push('/')
         this.props.onAddBookmark(data)
       })
       .catch(error => {
@@ -137,4 +139,4 @@ class AddBookmark extends Component {
   }
 }
 
-export default AddBookmark;
+export default withRouter(AddBookmark);
